@@ -1,4 +1,25 @@
 # Ramulator V2.0a
+# dprac
+dprac is an extended functionality of PRAC implemented in the file dprac.cpp located in src/dram_controller/impl/plugin/prac/. This feature enhances traditional PRAC behavior by offering more flexible refresh control mechanisms.
+
+How to Use:
+
+To enable dprac, use the modified YAML configuration file that includes dprac settings.
+
+The drac_config.yaml file is provided for configuring and enabling the dprac functionality.
+
+Configuration Options
+trefi_reset: "yes"
+→ Resets the access count of rows that have not been accessed during the tREFW period. This helps track only the rows that actually require refresh.
+
+serviceQ: "yes"
+→ Enables a queue-based PRAC method. Candidate rows for refresh are enqueued and serviced in order.
+
+adaptive_prac: "yes"
+→ An adaptive PRAC method that decides whether to enqueue a row for refresh based on a threshold. The threshold is determined by the proportion of rows currently loaded in the queue.
+
+For a detailed explanation of the algorithms and implementation, please refer to the related research paper.
+
 ## Introduction
 Ramulator 2.0 is a modern, modular, and extensible cycle-accurate DRAM simulator. It is the successor of Ramulator 1.0 [Kim+, CAL'16], achieving both fast simulation speed and ease of extension. The goal of Ramulator 2.0 is to enable rapid and agile implementation and evaluation of design changes in the memory controller and DRAM to meet the increasing research effort in improving the performance, security, and reliability of memory systems. Ramulator 2.0 abstracts and models key components in a DRAM-based memory system and their interactions into shared interfaces and independent implementations, enabling easy modification and extension of the modeled functions of the memory controller and DRAM. 
 
